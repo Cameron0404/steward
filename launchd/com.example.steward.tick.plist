@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Template. setup.sh --launchd fills in the three @@ placeholders and installs it into
+     ~/Library/LaunchAgents. Runs the queue tick every 60 seconds. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.example.steward.tick</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>@@PYTHON@@</string>
+    <string>@@STEWARD_DIR@@/stewardq.py</string>
+    <string>tick</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>STEWARD_HOME</key><string>@@STEWARD_HOME@@</string>
+  </dict>
+  <key>StartInterval</key><integer>60</integer>
+  <key>RunAtLoad</key><true/>
+  <key>StandardOutPath</key><string>@@STEWARD_HOME@@/queue/tick.log</string>
+  <key>StandardErrorPath</key><string>@@STEWARD_HOME@@/queue/tick.log</string>
+</dict>
+</plist>
